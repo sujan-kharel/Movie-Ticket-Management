@@ -1,0 +1,64 @@
+{%extends "index.html" %}
+{%block title%} View Tickets {%endblock%}
+
+{% block body %}
+<style>
+    table{
+        width: 50%;
+        margin: 50px;
+        }
+    th {
+        height: 50px;
+        }
+    td {
+        height: 30px;
+        text-align: center;
+        font-size: 22px;
+        }
+        td:hover {
+        background-color: #DBE4A3;
+        }
+
+  table, th, td {
+  border: .01px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<form action="display" method="post">
+    <table class="center" style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <th>Ticket Number</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Movie Name</th>
+            <th>Seat Number</th>
+            <th>Show Date</th>
+            <th>Update</th>
+            <th>Refund</th>
+        </tr>
+        {% for i in tickets %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+
+            <td><button type="submit" name="update" value={{i[0]}}> Update </button></td>
+            <td><button type="submit" name="refund" value="{{i[0]}}"> Refund </button></td>
+
+
+        </tr>
+
+        {%endfor%}
+    </table>
+
+</form>
+
+{%endblock%}

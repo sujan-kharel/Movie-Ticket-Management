@@ -1,0 +1,78 @@
+{%extends "index.html" %}
+{%block title%} Update {%endblock%}
+
+{% block body %}
+
+<style>
+    table{
+        width: 50%;
+        margin: 50px;
+        }
+    th {
+        height: 50px;
+        }
+    td {
+        height: 30px;
+        text-align: center;
+        font-size: 22px;
+        padding: 5px;
+        }
+        td:hover {
+        background-color: #DBE4A3;
+        }
+
+  table, th, td {
+  border: .01px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#date{
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+</style>
+
+<form action="update" method="post">
+    <table class="center" style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <th>Ticket Number</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Movie Name</th>
+            <th>Seat Number</th>
+            <th>Current Show Date</th>
+        </tr>
+
+        <tr>
+            <td>{{ticket[0][0]}}</td>
+            <td>{{ticket[0][2]}}</td>
+            <td>{{ticket[0][3]}}</td>
+            <td>{{ticket[0][4]}}</td>
+            <td>{{ticket[0][6]}}</td>
+            <td>{{ticket[0][7]}}</td>
+
+        </tr>
+
+    </table>
+
+        <div id = "date">
+            <select name="show_date" required>
+            <option disabled selected value = "">Available Dates</option>
+             {% for i in date %}
+            <option value="{{i[4]}}">{{i[4]}}</option>
+                {%endfor%}
+            </select>
+            <input type="hidden" name="ticket_number" value={{ticket[0][0]}}>
+            <input type="submit" value="Submit">
+        </div>
+
+</form>
+
+{%endblock%}

@@ -1,0 +1,73 @@
+{%extends "index.html" %}
+{%block title%} Conformation {%endblock%}
+
+{% block body %}
+
+<style>
+    .conformation {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+    }
+
+</style>
+<div class="conformation" style="padding:50px">
+    <form action="conformation" method="POST">
+
+        <div class ="description">
+        <h1>Movie Description: </h1>
+
+                <dt ><h2 >Movie Name : {{movies[0][1]}}</h2></dt>
+                <dd><h2>Duration : {{movies[0][2]}}</h2></dd>
+
+        </div>
+
+
+        <div id = "date">
+            <select name="show_date" style="font-size:20px;" required>
+            <option disabled selected value = "" >Available Dates</option>
+             {% for i in movies %}
+            <option value="{{i[4]}}">{{i[4]}}</option>
+                {%endfor%}
+        </select>
+        </div>
+
+        <div id = "seat" style="padding:10px; ">
+            <select name="seat_number" style="font-size:20px;"required>
+             <option disabled selected value = "">Available Seat Numbers</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+        </select>
+        </div>
+
+
+        <h2>Insert your information: </h2>
+        <div style="padding:10px">
+            <label>Name: <input autocomplete="off"
+                                    name="name" placeholder="Name" type="text" required></label>
+            </div>
+
+        <div style="padding:10px">
+        <label>Email: <input autocomplete="off"
+                                    name="email" placeholder="Email" type="text" required></label>
+            </div>
+
+        <input type="hidden" name="movie_id" value={{movies[0][0]}}>
+
+
+      <input name="submit" type="submit">
+
+    </form>
+</div>
+
+{%endblock%}
